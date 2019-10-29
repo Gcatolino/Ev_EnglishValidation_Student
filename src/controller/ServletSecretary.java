@@ -183,8 +183,8 @@ public class ServletSecretary extends HttpServlet {
         }
 
       } else if (flag == 2) { //Set cfu     
-    	  if(flag == 2)
-    		  throw new IllegalArgumentException("Parametro non valido");
+//    	  if(flag == 2)
+//    		  throw new IllegalArgumentException("Parametro non valido");
     	  
         Integer idRequest = Integer.parseInt(request.getParameter("idRequest"));
         Integer cfu = Integer.parseInt(request.getParameter("cfu"));
@@ -222,8 +222,8 @@ public class ServletSecretary extends HttpServlet {
         try {
           sql = " UPDATE request SET fk_state = ? WHERE id_request = ?; ";
           stmt = conn.prepareStatement(sql);
-          stmt.setInt(1, idRequest);
-          stmt.setInt(2, requestWorkingAdminState);
+          stmt.setInt(2, idRequest);					//cambio
+          stmt.setInt(1, requestWorkingAdminState);
           if (stmt.executeUpdate() > 0) {
             result = 1;
             content = "Richiesta inoltrata all'amministratore con successo.";
